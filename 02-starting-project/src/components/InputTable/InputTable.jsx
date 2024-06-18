@@ -1,23 +1,6 @@
 import "./InputTable.css";
-import { useState } from "react";
 
-export default function InputTable() {
-  const [userInput, setUserInput] = useState({
-    initialInvestment: 10000,
-    annualInvestment: 1200,
-    expectedReturn: 6,
-    duration: 10,
-  });
-
-  function handleChange(inputIdentifier, newValue) {
-    setUserInput((prevUserInput) => {
-      return {
-        ...prevUserInput,
-        [inputIdentifier]: newValue,
-      };
-    });
-  }
-
+export default function InputTable({ onChange, userInput }) {
   return (
     <section id="user-input">
       <div className="input-group">
@@ -28,7 +11,7 @@ export default function InputTable() {
             required
             value={userInput.initialInvestment}
             onChange={(event) =>
-              handleChange("initialInvestment", event.target.value)
+              onChange("initialInvestment", event.target.value)
             }
           />
         </p>
@@ -39,7 +22,7 @@ export default function InputTable() {
             required
             value={userInput.annualInvestment}
             onChange={(event) => {
-              handleChange("annualInvestment", event.target.value);
+              onChange("annualInvestment", event.target.value);
             }}
           />
         </p>
