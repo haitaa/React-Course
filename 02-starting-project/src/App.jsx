@@ -15,7 +15,7 @@ function App() {
     setUserInput((prevUserInput) => {
       return {
         ...prevUserInput,
-        [inputIdentifier]: newValue,
+        [inputIdentifier]: +newValue,
       };
     });
   }
@@ -24,7 +24,7 @@ function App() {
     <>
       <Header />
       <InputTable onChange={handleChange} userInput={userInput} />
-      <Results input={{ userInput }} />
+      <Results input={userInput} />
     </>
   );
 }
